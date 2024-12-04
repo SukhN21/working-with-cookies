@@ -58,7 +58,7 @@ function init() {
   }
 }
 
-document.getElementById("accept-all").addEventListener("click", () => {
+function handleAcceptAllClick() {
   setCookie("userConsent", "all", 20);
   setCookie("browser", getBrowser(), 20);
   setCookie("os", getOS(), 20);
@@ -68,7 +68,10 @@ document.getElementById("accept-all").addEventListener("click", () => {
   logPreferences(true, true, true, true);
 
   hideModals();
-});
+}
+
+const acceptAllButton = document.getElementById("accept-all");
+acceptAllButton.addEventListener("click", handleAcceptAllClick);
 
 const settingsButton = document.getElementById("settings");
 
@@ -79,7 +82,7 @@ function handleSettingsClick() {
 
 settingsButton.addEventListener("click", handleSettingsClick);
 
-document.getElementById("save-preferences").addEventListener("click", () => {
+function handleSavePreferencesClick() {
   const browserSelected = document.getElementById("browser-info").checked;
   const osSelected = document.getElementById("os-info").checked;
   const screenWidthSelected = document.getElementById("screen-width-info").checked;
@@ -95,6 +98,9 @@ document.getElementById("save-preferences").addEventListener("click", () => {
   logPreferences(browserSelected, osSelected, screenWidthSelected, screenHeightSelected);
 
   hideModals();
-});
+}
+
+const savePreferencesButton = document.getElementById("save-preferences");
+savePreferencesButton.addEventListener("click", handleSavePreferencesClick);
 
 window.onload = init;
